@@ -1,5 +1,5 @@
 #Time Complexity: O(n)
-#Space Compexity: O(1)
+#Space Compexity: O(n)
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         index1 = [(num , indx) for indx  , num in enumerate(nums)];
