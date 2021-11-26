@@ -1,17 +1,22 @@
 class Solution {
-    public int climbStairs(int n) {
-        if (n == 1 || n == 2) {
-            return n;
+    public int singleNonDuplicate(int[] nums) {
+        int result;
+        while (true) {
+            int mid = nums.length / 2;
+            if (!(subArray(nums, 0, mid).length % 2)) {
+                nums = subArray(nums, 0, mid);
+            }
+            else if (!(subArray(nums, mid+1, nums.length-1).length % 2)) {
+                nums = subArray(nums, mid+1, nums.length-1);
+            }
+            else result = mid;
+            break;
         }
+        return result;
+    }
 
-        int[] ways = new int[n];
-        ways[0] = 1;
-        ways[1] = 2;
-
-        for (int i = 2; i < n; i++) {
-            ways[i] = ways[i - 1] + ways[i - 2];
-        }
-
-        return ways[n - 1];
+    public static void main(String[] args) {
+        int[] nums = [1,1,2,3,3,4,4,8,8];
+        System.out.println(singleNonDuplicate(nums));
     }
 }
